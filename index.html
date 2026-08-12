@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Architectural Services</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #fff;
+            color: #111;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        /* =========================
+           SERVICES SECTION
+        ========================= */
+
+        .architecture-section {
+            width: 100%;
+            padding: 35px 3% 0;
+            background: #fff;
+        }
+
+        .architecture-grid {
+            max-width: 1450px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+        }
+
+        /* =========================
+           SERVICE CARD
+        ========================= */
+
+        .service-card {
+            background: #fff;
+            border: 1px solid #e2e2e2;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.12);
+            transition: 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.16);
+        }
+
+        /* =========================
+           IMAGE
+        ========================= */
+
+        .service-image {
+            width: 100%;
+            height: 125px;
+            overflow: hidden;
+        }
+
+        .service-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: 0.4s ease;
+        }
+
+        .service-card:hover .service-image img {
+            transform: scale(1.05);
+        }
+
+        /* =========================
+           CONTENT
+        ========================= */
+
+        .service-content {
+            min-height: 145px;
+            padding: 25px 15px 10px;
+        }
+
+        .service-content h2 {
+            text-align: center;
+            font-size: 15px;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+            color: #111;
+        }
+
+        .service-lists {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5px 12px;
+        }
+
+        .service-lists ul {
+            list-style: none;
+        }
+
+        .service-lists li {
+            position: relative;
+            padding-left: 11px;
+            font-size: 11.5px;
+            line-height: 1.65;
+            white-space: nowrap;
+        }
+
+        .service-lists li::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+
+        /* =========================
+           VIEW PROJECTS
+        ========================= */
+
+        .view-project {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 7px;
+            margin-top: 6px;
+            font-size: 12px;
+            font-weight: 600;
+            transition: 0.25s ease;
+        }
+
+        .view-project span {
+            font-size: 18px;
+            transition: 0.25s ease;
+        }
+
+        .view-project:hover span {
+            transform: translateX(5px);
+        }
+
+        .view-project-line {
+            width: 30px;
+            height: 2px;
+            margin: 3px auto 0;
+        }
+
+        /* Card-specific colors */
+
+        .residential .view-project {
+            color: #b8750b;
+        }
+
+        .residential .view-project-line {
+            background: #c88a19;
+        }
+
+        .commercial .view-project {
+            color: #073d75;
+        }
+
+        .commercial .view-project-line {
+            background: #073d75;
+        }
+
+        .industrial .view-project {
+            color: #333;
+        }
+
+        .industrial .view-project-line {
+            background: #555;
+        }
+
+        .institutional .view-project {
+            color: #073d75;
+        }
+
+        .institutional .view-project-line {
+            background: #073d75;
+        }
+
+        .hospitality .view-project {
+            color: #b8750b;
+        }
+
+        .hospitality .view-project-line {
+            background: #c88a19;
+        }
+
+        .interior .view-project {
+            color: #754820;
+        }
+
+        .interior .view-project-line {
+            background: #754820;
+        }
+
+        .landscape .view-project {
+            color: #28752e;
+        }
+
+        .landscape .view-project-line {
+            background: #28752e;
+        }
+
+        .urban .view-project {
+            color: #073d75;
+        }
+
+        .urban .view-project-line {
+            background: #073d75;
+        }
+
+
+        /* iframe */
+
+        .gallery-frame {
+            width: 100%;
+            height: 36vh;
+            border: none;
+        }
+
+
+        /* =========================
+           TABLET
+        ========================= */
+
+        @media (max-width: 1100px) {
+
+            .architecture-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .service-image {
+                height: 160px;
+            }
+        }
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media (max-width: 650px) {
+
+            .architecture-section {
+                padding: 20px 14px 0;
+            }
+
+            .architecture-grid {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+
+            .service-image {
+                height: 190px;
+            }
+
+            .service-content {
+                min-height: 165px;
+                padding-left: 20px;
+                padding-right: 20px;
+            }
+
+            .service-content h2 {
+                font-size: 16px;
+            }
+
+            .service-lists li {
+                font-size: 12px;
+            }
+        }
+
+        @media (max-width: 400px) {
+
+            .service-lists li {
+                font-size: 11px;
+            }
+        }
+        
+    </style>
+</head>
+
+<body>
+
+<section class="architecture-section">
+
+    <!-- =========================
+         SERVICE CARDS
+    ========================== -->
+
+    <div class="architecture-grid">
+
+        <!-- RESIDENTIAL -->
+        <article class="service-card residential">
+
+            <div class="service-image">
+                <img src="images/serve1.png"
+                     alt="Residential Architecture">
+            </div>
+
+            <div class="service-content">
+
+                <h2>Residential Architecture</h2>
+
+                <div class="service-lists">
+                    <ul>
+                        <li>Luxury Villas</li>
+                        <li>Apartments</li>
+                        <li>Independent Houses</li>
+                    </ul>
+
+                    <ul>
+                        <li>Farm Houses</li>
+                        <li>Renovation</li>
+                        <li>Interior Planning</li>
+                    </ul>
+                </div>
+
+                <a href="residential-architecture.html"
+                   class="view-project">
+                    View Projects <span>→</span>
+                </a>
+
+                <div class="view-project-line"></div>
+
+            </div>
+        </article>
+
+
+        <!-- COMMERCIAL -->
+        <article class="service-card commercial">
+
+            <div class="service-image">
+                <img src="images/serve2.png"
+                     alt="Commercial Architecture">
+            </div>
+
+            <div class="service-content">
+
+                <h2>Commercial Architecture</h2>
+
+                <div class="service-lists">
+                    <ul>
+                        <li>Corporate Offices</li>
+                        <li>Shopping Malls</li>
+                        <li>Retail Spaces</li>
+                    </ul>
+
+                    <ul>
+                        <li>Hotels</li>
+                        <li>Business Parks</li>
+                        <li>Mixed Use Buildings</li>
+                    </ul>
+                </div>
+
+                <a href="commercial-architecture.html"
+                   class="view-project">
+                    View Projects <span>→</span>
+                </a>
+
+                <div class="view-project-line"></div>
+
+            </div>
+        </article>
+
+
+        <!-- INDUSTRIAL -->
+        <article class="service-card industrial">
+
+            <div class="service-image">
+                <img src="images/serve3.png"
+                     alt="Industrial Architecture">
+            </div>
+
+            <div class="service-content">
+
+                <h2>Industrial Architecture</h2>
+
+                <div class="service-lists">
+                    <ul>
+                        <li>Warehouses</li>
+                        <li>Manufacturing Plants</li>
+                        <li>Logistics Centers</li>
+                    </ul>
+
+                    <ul>
+                        <li>Cold Storage</li>
+                        <li>Industrial Sheds</li>
+                        <li>Production Units</li>
+                    </ul>
+                </div>
+
+                <a href="industrial-architecture.html"
+                   class="view-project">
+                    View Projects <span>→</span>
+                </a>
+
+                <div class="view-project-line"></div>
+
+            </div>
+        </article>
+
+
+        <!-- INSTITUTIONAL -->
+        <article class="service-card institutional">
+
+            <div class="service-image">
+                <img src="images/serve4.png"
+                     alt="Institutional Architecture">
+            </div>
+
+            <div class="service-content">
+
+                <h2>Institutional Architecture</h2>
+
+                <div class="service-lists">
+                    <ul>
+                        <li>Schools</li>
+                        <li>Colleges</li>
+                        <li>Hospitals</li>
+                    </ul>
+
+                    <ul>
+                        <li>Universities</li>
+                        <li>Libraries</li>
+                        <li>Government Buildings</li>
+                    </ul>
+                </div>
+
+                <a href="institutional-architecture.html"
+                   class="view-project">
+                    View Projects <span>→</span>
+                </a>
+
+                <div class="view-project-line"></div>
+
+            </div>
+        </article>
+
+
+        <!-- HOSPITALITY -->
+        <article class="service-card hospitality">
+
+            <div class="service-image">
+                <img src="images/serve5.png"
+                     alt="Hospitality Architecture">
+            </div>
+
+            <div class="service-content">
+
+                <h2>Hospitality Architecture</h2>
+
+                <div class="service-lists">
+                    <ul>
+                        <li>Hotels</li>
+                        <li>Resorts</li>
+                        <li>Restaurants</li>
+                    </ul>
+
+                    <ul>
+                        <li>Clubs</li>
+                        <li>Convention Centers</li>
+                        <li>Vacation Villas</li>
+                    </ul>
+                </div>
+
+                <a href="hospitality-architecture.html"
+                   class="view-project">
+                    View Projects <span>→</span>
+                </a>
+
+                <div class="view-project-line"></div>
+
+            </div>
+        </article>
+
+
+        <!-- INTERIOR -->
+        <article class="service-card interior">
+
+            <div class="service-image">
+                <img src="images/serve6.png"
+                     alt="Interior Architecture">
+            </div>
+
+            <div class="service-content">
+
+                <h2>Interior Architecture</h2>
+
+                <div class="service-lists">
+                    <ul>
+                        <li>Luxury Interiors</li>
+                        <li>Office Interiors</li>
+                        <li>Kitchen Design</li>
+                    </ul>
+
+                    <ul>
+                        <li>Bedroom Design</li>
+                        <li>Lighting Design</li>
+                        <li>Furniture Planning</li>
+                    </ul>
+                </div>
+
+                <a href="interior-architecture.html"
+                   class="view-project">
+                    View Projects <span>→</span>
+                </a>
+
+                <div class="view-project-line"></div>
+
+            </div>
+        </article>
+
+
+        <!-- LANDSCAPE -->
+        <article class="service-card landscape">
+
+            <div class="service-image">
+                <img src="images/serve7.png"
+                     alt="Landscape Architecture">
+            </div>
+
+            <div class="service-content">
+
+                <h2>Landscape Architecture</h2>
+
+                <div class="service-lists">
+                    <ul>
+                        <li>Garden Design</li>
+                        <li>Roof Gardens</li>
+                        <li>Swimming Pools</li>
+                    </ul>
+
+                    <ul>
+                        <li>Water Features</li>
+                        <li>Outdoor Spaces</li>
+                        <li>Resort Landscaping</li>
+                    </ul>
+                </div>
+
+                <a href="landscape-architecture.html"
+                   class="view-project">
+                    View Projects <span>→</span>
+                </a>
+
+                <div class="view-project-line"></div>
+
+            </div>
+        </article>
+
+
+        <!-- URBAN PLANNING -->
+        <article class="service-card urban">
+
+            <div class="service-image">
+                <img src="images/serve8.png"
+                     alt="Urban Planning">
+            </div>
+
+            <div class="service-content">
+
+                <h2>Urban Planning</h2>
+
+                <div class="service-lists">
+                    <ul>
+                        <li>Master Planning</li>
+                        <li>Townships</li>
+                        <li>Road Networks</li>
+                    </ul>
+
+                    <ul>
+                        <li>Smart Cities</li>
+                        <li>Infrastructure Planning</li>
+                        <li>Public Spaces</li>
+                    </ul>
+                </div>
+
+                <a href="urban-planning.html"
+                   class="view-project">
+                    View Projects <span>→</span>
+                </a>
+
+                <div class="view-project-line"></div>
+
+            </div>
+        </article>
+
+    </div>
+
+</section>
+
+
+<!-- EMBED GALLERY DESIGN -->
+
+<iframe 
+    src="https://saventureinfratech234-boop.github.io/architecture-gallery/" 
+    class="gallery-frame"
+    title="About architecture gallery">
+</iframe>
+
+</body>
+</html>
